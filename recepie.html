@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Recipes - Tasty Hub</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Body Styling */
+    body {
+      background-color: #111;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    /* Header */
+    header {
+      width: 100%;
+      text-align: center;
+      padding: 20px;
+      background-color: #333;
+    }
+
+    header h1 {
+      font-size: 2em;
+      color: #fdd835;
+    }
+
+    /* Search Section */
+    .search-section {
+      margin-top: 20px;
+      width: 100%;
+      text-align: center;
+      padding-bottom: 20px;
+    }
+
+    .search-section input {
+      padding: 10px;
+      width: 300px;
+      border-radius: 5px;
+      border: 1px solid #fdd835;
+      outline: none;
+      background-color: #222;
+      color: #fdd835;
+    }
+
+    .search-section button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #fdd835;
+      color: #333;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-left: 5px;
+    }
+
+    /* Recipes Container */
+    .recipes-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 20px;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    /* Recipe Card */
+    .recipe-card {
+      background-color: #222;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      display: flex;
+      overflow: hidden;
+      border: 1px solid #fdd835;
+      transition: transform 0.3s;
+      height: 150px;
+    }
+
+    .recipe-card:hover {
+      transform: scale(1.02);
+    }
+
+    .recipe-card img {
+      width: 200px;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .recipe-info {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .recipe-info h3 {
+      font-size: 1.2em;
+      color: #fdd835;
+      margin: 0;
+    }
+
+    .recipe-info p {
+      color: #ddd;
+      font-size: 0.9em;
+      margin: 5px 0;
+    }
+
+    .recipe-info a {
+      color: #fdd835;
+      text-decoration: underline;
+    }
+
+    .recipe-info a:hover {
+      color: #ffeb3b;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <h1>All Recipes</h1>
+  </header>
+
+  <!-- Search Section -->
+  <div class="search-section">
+    <input type="text" id="recipeSearch" placeholder="Search here..." onkeyup="searchRecipes()">
+    <button>Search</button>
+  </div>
+
+  <!-- Recipes Container -->
+  <div class="recipes-container" id="recipesContainer">
+
+    <!-- Recipe Card 1 -->
+    <div class="recipe-card" data-name="Pasta">
+      <img src="images.jpg" alt="Pasta">
+      <div class="recipe-info">
+        <h3>Pasta Recipe</h3>
+        <p>Category: Pasta | Time: 25 mins</p>
+        <a href="https://youtube.com/shorts/n4m36Le49S0?si=jVgYtFsyQytVp4w5" target="_blank">https://www.youtube.com/watch?v=example1</a>
+      </div>
+    </div>
+
+    <!-- Recipe Card 2 -->
+    <div class="recipe-card" data-name="Ramen Noodles">
+      <img src="/C2.jpg" alt="Ramen Noodles">
+      <div class="recipe-info">
+        <h3>Saucy Ramen Noodles Recipe</h3>
+        <p>Category: Noodles | Time: 20 mins</p>
+        <a href="https://youtu.be/O9rGwhpY92c?si=Fv1rJMgfz9Emqg41" target="_blank">https://www.youtube.com/watch?v=example2</a>
+      </div>
+    </div>
+
+    <!-- Recipe Card 3 -->
+    <div class="recipe-card" data-name="Chicken Tikka">
+      <img src="biryani.jpg" alt="Chicken Tikka">
+      <div class="recipe-info">
+        <h3>Chicken Tikka Recipe</h3>
+        <p>Category: Grilled | Time: 15 mins</p>
+        <a href="https://youtu.be/zkOrPKe-aRs?si=g7wCSDyaYiEl-4iK" target="_blank">https://www.youtube.com/watch?v=example3</a>
+      </div>
+    </div>
+
+    <!-- Recipe Card 4 -->
+    <div class="recipe-card" data-name="Chicken Roast">
+      <img src="chicken.jpg" alt="Chicken Roast">
+      <div class="recipe-info">
+        <h3>Chicken Roast Recipe</h3>
+        <p>Category: Roast | Time: 20 mins</p>
+        <a href="https://youtu.be/3FgcAF5EkFo?si=u2N9FhyEB6EZwXFQ" target="_blank">https://www.youtube.com/watch?v=example4</a>
+      </div>
+    </div>
+
+    <!-- Recipe Card 5 -->
+    <div class="recipe-card" data-name="Fish Roast">
+      <img src="fish.jpg" alt="Fish Roast">
+      <div class="recipe-info">
+        <h3>Fish Roast Recipe</h3>
+        <p>Category: Roast | Time: 20 mins</p>
+        <a href="https://www.youtube.com/shorts/ow52ppQUnBw" target="_blank">https://www.youtube.com/watch?v=example5</a>
+      </div>
+    </div>
+
+    <!-- Recipe Card 6 -->
+    <div class="recipe-card" data-name="Dessert">
+      <img src="/C8.jpg" alt="Dessert">
+      <div class="recipe-info">
+        <h3>Dessert Recipe</h3>
+        <p>Category: Dessert | Time: 10 mins</p>
+        <a href="https://youtu.be/sfrWbvBUeo4?si=dTND8hKdp0dSOabv" target="_blank">https://www.youtube.com/watch?v=example6</a>
+      </div>
+    </div>
+
+    <!-- Recipe Card 7 -->
+    <div class="recipe-card" data-name="Chicken Fries">
+      <img src="/C2.jpg" alt="Chicken Fries">
+      <div class="recipe-info">
+        <h3>Chicken Fries Recipe</h3>
+        <p>Category: Snacks | Time: 15 mins</p>
+        <a href="https://youtu.be/kGPui464bSA?si=lNM9fGfFMgSzERRg" target="_blank">https://www.youtube.com/watch?v=example7</a>
+      </div>
+    </div>
+
+    <!-- Recipe Card 8 -->
+    <div class="recipe-card" data-name="Crown Crust Pizza">
+      <img src="pizza.jpg" alt="Crown Crust Pizza">
+      <div class="recipe-info">
+        <h3>Crown Crust Pizza Recipe</h3>
+        <p>Category: Pizza | Time: 30 mins</p>
+        <a href="https://youtube.com/shorts/s2nU8VLwKgI?si=0iiohZypfk9GNnN6" target="_blank">https://www.youtube.com/watch?v=example8</a>
+      </div>
+    </div>
+
+    <!-- Recipe Card 9 -->
+    <div class="recipe-card" data-name="Spanish Salad">
+      <img src="salad.jpg" alt="Spanish Salad">
+      <div class="recipe-info">
+        <h3>Spanish Salad Recipe</h3>
+        <p>Category: Salad | Time: 10 mins</p>
+        <a href="https://www.youtube.com/watch?v=pwN9IDk_pog&pp=ygUNc3BhbmlzaCBzYWxhZA%3D%3D" target="_blank">https://www.youtube.com/watch?v=example9</a>
+      </div>
+    </div>
+
+    <!-- Recipe Card 10 -->
+    <div class="recipe-card" data-name="Chow Mein">
+      <img src="chowmin.jpg" alt="Chow Mein">
+      <div class="recipe-info">
+        <h3>Chow Mein Recipe</h3>
+        <p>Category: Noodles | Time: 15 mins</p>
+        <a href="https://www.youtube.com/watch?v=DUyPDM_mINU&pp=ygUHY2hvd21pbg%3D%3D" target="_blank">https://www.youtube.com/watch?v=example10</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- JavaScript for Recipe Search -->
+  <script>
+    function searchRecipes() {
+      const input = document.getElementById('recipeSearch').value.toLowerCase();
+      const recipes = document.querySelectorAll('.recipe-card');
+
+      recipes.forEach(recipe => {
+        const recipeName = recipe.getAttribute('data-name').toLowerCase();
+        if (recipeName.includes(input)) {
+          recipe.style.display = 'flex';
+        } else {
+          recipe.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+  <br><br><br><br>
+  <!-- Footer Section -->
+<footer class="footer py-4 mt-5 text-center" style="background-color: #111;">
+    <p>&copy; 2024 Food Management System. All Rights Reserved.</p>
+    <p>Follow us on 
+      <a href="#" style="color: #FFD700;">Facebook</a>, 
+      <a href="#" style="color: #FFD700;">Instagram</a>, and 
+      <a href="#" style="color: #FFD700;">Twitter</a>.
+    </p>
+  </footer>
+  <br>
+
+</body>
+</html>

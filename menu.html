@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu - Food Management System</title>
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #121212;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+    
+    .yellow-theme {
+      color: #FFD700;
+    }
+
+    .section-title {
+      font-size: 3rem;
+      margin-bottom: 50px;
+      text-transform: uppercase;
+    }
+
+    .dish-card {
+      border: none;
+      transition: all 0.3s ease;
+      background-color: #1a1a1a;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .dish-card:hover {
+      background-color: #333;
+      transform: scale(1.05);
+    }
+
+    .dish-img {
+      border-radius: 8px 8px 0 0;
+      max-height: 200px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .card-text {
+      font-size: 1.1rem;
+      color: #ccc;
+    }
+
+    .chef-name {
+      color: #FFD700;
+      font-weight: bold;
+    }
+
+    .footer {
+      background-color: #121212;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .footer p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Menu Section -->
+  <section class="container py-5 text-center">
+    <h2 class="section-title yellow-theme">Our Delicious Dishes</h2>
+    <div class="row gap-3 d-flex justify-content-center align-items-center">
+
+      <!-- Dish 1 -->
+      <div class="col-md-4 w-25">
+        <div class="card dish-card">
+          <img src="box1.jpg" class="dish-img" alt="Dish 1">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Spaghetti</h5>
+            <p class="card-text">A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.</p>
+            <p class="chef-name">Chef: John Doe</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dish 2 -->
+      <div class="col-md-4 w-25">
+        <div class="card dish-card">
+          <img src="box2.jpg" class="dish-img" alt="Dish 2">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Grilled Salmon</h5>
+            <p class="card-text">Perfectly grilled salmon with a hint of lemon, garlic, and rosemary.</p>
+            <p class="chef-name">Chef: Jane Smith</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dish 3 -->
+      <div class="col-md-4 w-25">
+        <div class="card dish-card">
+          <img src="box3.jpg" class="dish-img" alt="Dish 3">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Chicken Alfredo</h5>
+            <p class="card-text">A creamy, rich pasta dish with chicken, garlic, and parmesan cheese.</p>
+            <p class="chef-name">Chef: Emily Brown</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dish 4 -->
+      <div class="col-md-4 w-25 mt-5">
+        <div class="card dish-card">
+          <img src="box4.jpg" class="dish-img" alt="Dish 4">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Margherita Pizza</h5>
+            <p class="card-text">A simple pizza with fresh basil, mozzarella, and tomatoes.</p>
+            <p class="chef-name">Chef: Mike Davis</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dish 5 -->
+      <div class="col-md-4 w-25 mt-5">
+        <div class="card dish-card">
+          <img src="box5.jpg" class="dish-img" alt="Dish 5">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Beef Wellington</h5>
+            <p class="card-text">A delicious beef tenderloin wrapped in puff pastry and baked to perfection.</p>
+            <p class="chef-name">Chef: Sarah Lee</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dish 6 -->
+      <div class="col-md-4 w-25 mt-5">
+        <div class="card dish-card">
+          <img src="box6.jpg" class="dish-img" alt="Dish 6">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Vegetarian Stir Fry</h5>
+            <p class="card-text">A colorful and healthy stir fry with mixed vegetables and tofu.</p>
+            <p class="chef-name">Chef: Liam Wilson</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2024 Food Management System</p>
+    <p>Delicious dishes created with love and passion!</p>
+  </footer>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
