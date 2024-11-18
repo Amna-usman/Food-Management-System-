@@ -71,6 +71,23 @@
     .footer p {
       margin: 0;
     }
+    .btn-add-cart {
+  background-color: rgb(240, 202, 32); /* Button background */
+  color: black;            /* Button text color */
+  border: 2px solid black; /* Border style */
+  padding: 10px 20px;      /* Button padding */
+  font-size: 16px;         /* Font size */
+  font-weight: bold;       /* Font weight */
+  border-radius: 5px;      /* Rounded corners */
+  cursor: pointer;         /* Pointer cursor on hover */
+  transition: all 0.3s ease; /* Smooth hover effect */
+}
+
+.btn-add-cart:hover {
+  background-color: black; /* Invert colors on hover */
+  color: yellow;           /* Inverted text color */
+}
+
   </style>
 </head>
 <body>
@@ -78,7 +95,95 @@
   <!-- Menu Section -->
   <section class="container py-5 text-center">
     <h2 class="section-title yellow-theme">Our Delicious Dishes</h2>
+
+    <h3 class="fw-bold">Indian Classic Food</h3>
     <div class="row gap-3 d-flex justify-content-center align-items-center">
+
+      <!-- Dish 1 -->
+      <div class="col-md-4 w-25">
+        <div class="card dish-card">
+          <img src="cr1.jpg"  class="dish-img" alt="Dish 1">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Burger</h5>
+            <p class="card-text">A classic Burger made with eggs, cheese, pancetta, and pepper.</p>
+            <p class="chef-name">Chef: Mak John</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dish 2 -->
+      <div class="col-md-4 w-25">
+        <div class="card dish-card">
+          <img src="C1.jpg" class="dish-img" alt="Dish 2">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Butter Chicken</h5>
+            <p class="card-text">Perfectly butter chicken with a hint of lemon, garlic, and rosemary.</p>
+            <p class="chef-name">Chef: Emily</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dish 3 -->
+      <div class="col-md-4 w-25">
+        <div class="card dish-card">
+          <img src="menu6.jpeg" class="dish-img" alt="Dish 3">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Chicken Biryani</h5>
+            <p class="card-text">Super spicy chicken biryani with vibrant classics of Hyderabad, Karachi.</p>
+            <p class="chef-name">Chef: Amna Usman</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dish 4 -->
+      <div class="col-md-4 w-25 mt-5">
+        <div class="card dish-card">
+          <img src="C9.jpg" class="dish-img" alt="Dish 4">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Pasta</h5>
+            <p class="card-text">A simple pasta with fresh basil, mozzarella, and tomatoes.</p>
+            <p class="chef-name">Chef: Davis</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dish 5 -->
+      <div class="col-md-4 w-25 mt-5">
+        <div class="card dish-card">
+          <img src="C7.jpg" class="dish-img" alt="Dish 5">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Cheese Macroni</h5>
+            <p class="card-text">A delicious beef tenderloin wrapped in puff pastry and baked to perfection.</p>
+            <p class="chef-name">Chef: Sarah Lee</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dish 6 -->
+      <div class="col-md-4 w-25 mt-5">
+        <div class="card dish-card">
+          <img src="C3.jpg" class="dish-img" alt="Dish 6">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Special Spaghetti</h5>
+            <p class="card-text">A colorful and healthy stir fry with mixed vegetables and tofu.</p>
+            <p class="chef-name">Chef: Wilson</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <h3 class="fw-bold">Itallian Food</h3>
+
+
+
+    <div class="row gap-3 d-flex justify-content-center align-items-center mt-5">
 
       <!-- Dish 1 -->
       <div class="col-md-4 w-25">
@@ -88,6 +193,7 @@
             <h5 class="card-title yellow-theme">Spaghetti</h5>
             <p class="card-text">A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.</p>
             <p class="chef-name">Chef: John Doe</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
           </div>
         </div>
       </div>
@@ -100,6 +206,7 @@
             <h5 class="card-title yellow-theme">Grilled Salmon</h5>
             <p class="card-text">Perfectly grilled salmon with a hint of lemon, garlic, and rosemary.</p>
             <p class="chef-name">Chef: Jane Smith</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
           </div>
         </div>
       </div>
@@ -112,6 +219,7 @@
             <h5 class="card-title yellow-theme">Chicken Alfredo</h5>
             <p class="card-text">A creamy, rich pasta dish with chicken, garlic, and parmesan cheese.</p>
             <p class="chef-name">Chef: Emily Brown</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
           </div>
         </div>
       </div>
@@ -124,6 +232,7 @@
             <h5 class="card-title yellow-theme">Margherita Pizza</h5>
             <p class="card-text">A simple pizza with fresh basil, mozzarella, and tomatoes.</p>
             <p class="chef-name">Chef: Mike Davis</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
           </div>
         </div>
       </div>
@@ -136,6 +245,7 @@
             <h5 class="card-title yellow-theme">Beef Wellington</h5>
             <p class="card-text">A delicious beef tenderloin wrapped in puff pastry and baked to perfection.</p>
             <p class="chef-name">Chef: Sarah Lee</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
           </div>
         </div>
       </div>
@@ -148,10 +258,269 @@
             <h5 class="card-title yellow-theme">Vegetarian Stir Fry</h5>
             <p class="card-text">A colorful and healthy stir fry with mixed vegetables and tofu.</p>
             <p class="chef-name">Chef: Liam Wilson</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
           </div>
         </div>
       </div>
     </div>
+
+
+    <h3 class="fw-bold">Mexiacn </h3>
+
+    <div class="row gap-3 d-flex justify-content-center align-items-center mt-5">
+
+      <!-- Dish 1 -->
+      <div class="col-md-4 w-25">
+        <div class="card dish-card">
+          <img src="box1.jpg" class="dish-img" alt="Dish 1">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Spaghetti</h5>
+            <p class="card-text">A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.</p>
+            <p class="chef-name">Chef: John Doe</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dish 2 -->
+      <div class="col-md-4 w-25">
+        <div class="card dish-card">
+          <img src="box2.jpg" class="dish-img" alt="Dish 2">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Grilled Salmon</h5>
+            <p class="card-text">Perfectly grilled salmon with a hint of lemon, garlic, and rosemary.</p>
+            <p class="chef-name">Chef: Jane Smith</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dish 3 -->
+      <div class="col-md-4 w-25">
+        <div class="card dish-card">
+          <img src="box3.jpg" class="dish-img" alt="Dish 3">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Chicken Alfredo</h5>
+            <p class="card-text">A creamy, rich pasta dish with chicken, garlic, and parmesan cheese.</p>
+            <p class="chef-name">Chef: Emily Brown</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dish 4 -->
+      <div class="col-md-4 w-25 mt-5">
+        <div class="card dish-card">
+          <img src="box4.jpg" class="dish-img" alt="Dish 4">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Margherita Pizza</h5>
+            <p class="card-text">A simple pizza with fresh basil, mozzarella, and tomatoes.</p>
+            <p class="chef-name">Chef: Mike Davis</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dish 5 -->
+      <div class="col-md-4 w-25 mt-5">
+        <div class="card dish-card">
+          <img src="box5.jpg" class="dish-img" alt="Dish 5">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Beef Wellington</h5>
+            <p class="card-text">A delicious beef tenderloin wrapped in puff pastry and baked to perfection.</p>
+            <p class="chef-name">Chef: Sarah Lee</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dish 6 -->
+      <div class="col-md-4 w-25 mt-5">
+        <div class="card dish-card">
+          <img src="box6.jpg" class="dish-img" alt="Dish 6">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Vegetarian Stir Fry</h5>
+            <p class="card-text">A colorful and healthy stir fry with mixed vegetables and tofu.</p>
+            <p class="chef-name">Chef: Liam Wilson</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <h3 class="fw-bold">Chinese</h3>
+    <div class="row gap-3 d-flex justify-content-center align-items-center mt-5">
+
+      <!-- Dish 1 -->
+      <div class="col-md-4 w-25">
+        <div class="card dish-card">
+          <img src="box1.jpg" class="dish-img" alt="Dish 1">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Spaghetti</h5>
+            <p class="card-text">A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.</p>
+            <p class="chef-name">Chef: John Doe</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dish 2 -->
+      <div class="col-md-4 w-25">
+        <div class="card dish-card">
+          <img src="box2.jpg" class="dish-img" alt="Dish 2">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Grilled Salmon</h5>
+            <p class="card-text">Perfectly grilled salmon with a hint of lemon, garlic, and rosemary.</p>
+            <p class="chef-name">Chef: Jane Smith</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dish 3 -->
+      <div class="col-md-4 w-25">
+        <div class="card dish-card">
+          <img src="box3.jpg" class="dish-img" alt="Dish 3">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Chicken Alfredo</h5>
+            <p class="card-text">A creamy, rich pasta dish with chicken, garlic, and parmesan cheese.</p>
+            <p class="chef-name">Chef: Emily Brown</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dish 4 -->
+      <div class="col-md-4 w-25 mt-5">
+        <div class="card dish-card">
+          <img src="box4.jpg" class="dish-img" alt="Dish 4">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Margherita Pizza</h5>
+            <p class="card-text">A simple pizza with fresh basil, mozzarella, and tomatoes.</p>
+            <p class="chef-name">Chef: Mike Davis</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dish 5 -->
+      <div class="col-md-4 w-25 mt-5">
+        <div class="card dish-card">
+          <img src="box5.jpg" class="dish-img" alt="Dish 5">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Beef Wellington</h5>
+            <p class="card-text">A delicious beef tenderloin wrapped in puff pastry and baked to perfection.</p>
+            <p class="chef-name">Chef: Sarah Lee</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dish 6 -->
+      <div class="col-md-4 w-25 mt-5">
+        <div class="card dish-card">
+          <img src="box6.jpg" class="dish-img" alt="Dish 6">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Vegetarian Stir Fry</h5>
+            <p class="card-text">A colorful and healthy stir fry with mixed vegetables and tofu.</p>
+            <p class="chef-name">Chef: Liam Wilson</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h3 class="fw-bold">Desserts</h3>
+    <div class="row gap-3 d-flex justify-content-center align-items-center mt-5">
+
+      <!-- Dish 1 -->
+      <div class="col-md-4 w-25">
+        <div class="card dish-card">
+          <img src="box1.jpg" class="dish-img" alt="Dish 1">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Spaghetti</h5>
+            <p class="card-text">A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.</p>
+            <p class="chef-name">Chef: John Doe</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dish 2 -->
+      <div class="col-md-4 w-25">
+        <div class="card dish-card">
+          <img src="box2.jpg" class="dish-img" alt="Dish 2">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Grilled Salmon</h5>
+            <p class="card-text">Perfectly grilled salmon with a hint of lemon, garlic, and rosemary.</p>
+            <p class="chef-name">Chef: Jane Smith</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dish 3 -->
+      <div class="col-md-4 w-25">
+        <div class="card dish-card">
+          <img src="box3.jpg" class="dish-img" alt="Dish 3">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Chicken Alfredo</h5>
+            <p class="card-text">A creamy, rich pasta dish with chicken, garlic, and parmesan cheese.</p>
+            <p class="chef-name">Chef: Emily Brown</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dish 4 -->
+      <div class="col-md-4 w-25 mt-5">
+        <div class="card dish-card">
+          <img src="box4.jpg" class="dish-img" alt="Dish 4">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Margherita Pizza</h5>
+            <p class="card-text">A simple pizza with fresh basil, mozzarella, and tomatoes.</p>
+            <p class="chef-name">Chef: Mike Davis</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dish 5 -->
+      <div class="col-md-4 w-25 mt-5">
+        <div class="card dish-card">
+          <img src="box5.jpg" class="dish-img" alt="Dish 5">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Beef Wellington</h5>
+            <p class="card-text">A delicious beef tenderloin wrapped in puff pastry and baked to perfection.</p>
+            <p class="chef-name">Chef: Sarah Lee</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dish 6 -->
+      <div class="col-md-4 w-25 mt-5">
+        <div class="card dish-card">
+          <img src="box6.jpg" class="dish-img" alt="Dish 6">
+          <div class="card-body">
+            <h5 class="card-title yellow-theme">Vegetarian Stir Fry</h5>
+            <p class="card-text">A colorful and healthy stir fry with mixed vegetables and tofu.</p>
+            <p class="chef-name">Chef: Liam Wilson</p>
+            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
   </section>
 
   <!-- Footer -->
