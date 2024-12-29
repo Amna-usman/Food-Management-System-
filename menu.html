@@ -4,25 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Menu - Food Management System</title>
-  <!-- Bootstrap 5 CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Toastify CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <!-- SweetAlert2 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+  
   <style>
-    body {
-      background-color: #121212;
-      color: #fff;
-      font-family: Arial, sans-serif;
-    }
-    
-    .yellow-theme {
-      color: #FFD700;
-    }
-
-    .section-title {
-      font-size: 3rem;
-      margin-bottom: 50px;
-      text-transform: uppercase;
-    }
-
+    body { background-color: #121212; color: #fff; }
+    .yellow-theme { color: #FFD700; }
     .dish-card {
       border: none;
       transition: all 0.3s ease;
@@ -30,506 +21,278 @@
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
-
-    .dish-card:hover {
-      background-color: #333;
-      transform: scale(1.05);
-    }
-
+    .dish-card:hover { background-color: #333; transform: scale(1.05); }
     .dish-img {
       border-radius: 8px 8px 0 0;
       max-height: 200px;
       object-fit: cover;
     }
-
-    .card-body {
-      padding: 20px;
-    }
-
-    .card-title {
-      font-size: 1.5rem;
+    .dish-price {
+      font-size: 18px;
       font-weight: bold;
-    }
-
-    .card-text {
-      font-size: 1.1rem;
-      color: #ccc;
-    }
-
-    .chef-name {
-      color: #FFD700;
-      font-weight: bold;
-    }
-
-    .footer {
-      background-color: #121212;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .footer p {
-      margin: 0;
+      color: #ff5722;
     }
     .btn-add-cart {
-  background-color: rgb(240, 202, 32); /* Button background */
-  color: black;            /* Button text color */
-  border: 2px solid black; /* Border style */
-  padding: 10px 20px;      /* Button padding */
-  font-size: 16px;         /* Font size */
-  font-weight: bold;       /* Font weight */
-  border-radius: 5px;      /* Rounded corners */
-  cursor: pointer;         /* Pointer cursor on hover */
-  transition: all 0.3s ease; /* Smooth hover effect */
-}
-
-.btn-add-cart:hover {
-  background-color: black; /* Invert colors on hover */
-  color: yellow;           /* Inverted text color */
-}
-
+      background: linear-gradient(45deg, #ffd700, #ffa500);
+      color: black;
+      border: none;
+      padding: 10px 25px;
+      font-size: 13px;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-add-cart:hover {
+      transform: scale(1.05);
+      background: linear-gradient(45deg, #ffa500, #ffd700);
+    }
+    .cart-icon {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #FFD700;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1000;
+      transition: transform 0.3s ease;
+    }
+    .cart-icon:hover {
+      transform: scale(1.1);
+    }
+    .cart-count {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: #ff5722;
+      color: white;
+      border-radius: 50%;
+      padding: 4px 8px;
+      font-size: 12px;
+    }
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 400px;
+      height: 100vh;
+      background: #1a1a1a;
+      padding: 20px;
+      transition: all 0.3s ease;
+      z-index: 999;
+    }
+    .cart-sidebar.active { right: 0; }
+    .cart-items {
+      max-height: calc(100vh - 200px);
+      overflow-y: auto;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #333;
+      animation: slideIn 0.3s ease;
+    }
+    .cart-total {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      padding: 20px;
+      background: #333;
+      border-radius: 8px;
+    }
+    @keyframes slideIn {
+      from { transform: translateX(100px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    
+    /* Custom SweetAlert styling */
+    .swal2-popup {
+      background: #1a1a1a !important;
+      color: #fff !important;
+    }
+    .swal2-title, .swal2-content {
+      color: #fff !important;
+    }
+    .swal2-confirm {
+      background: linear-gradient(45deg, #ffd700, #ffa500) !important;
+      color: black !important;
+    }
   </style>
 </head>
 <body>
+  <div class="cart-icon" onclick="toggleCart()">
+    <i class="fas fa-shopping-cart"></i>
+    <span class="cart-count">0</span>
+  </div>
 
-  <!-- Menu Section -->
+  <div class="cart-sidebar">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h3>Shopping Cart</h3>
+      <span style="cursor: pointer; font-size: 24px;" onclick="toggleCart()">&times;</span>
+    </div>
+    <div class="cart-items"></div>
+    <div class="cart-total">
+      <h4>Total: $<span id="cart-total-amount">0</span></h4>
+    </div>
+  </div>
+
   <section class="container py-5 text-center">
-    <h2 class="section-title yellow-theme">Our Delicious Dishes</h2>
-
-    <h3 class="fw-bold">Indian Classic Food</h3>
-    <div class="row gap-3 d-flex justify-content-center align-items-center">
-
-      <!-- Dish 1 -->
-      <div class="col-md-4 w-25">
-        <div class="card dish-card">
-          <img src="cr1.jpg"  class="dish-img" alt="Dish 1">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Burger</h5>
-            <p class="card-text">A classic Burger made with eggs, cheese, pancetta, and pepper.</p>
-            <p class="chef-name">Chef: Mak John</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dish 2 -->
-      <div class="col-md-4 w-25">
-        <div class="card dish-card">
-          <img src="C1.jpg" class="dish-img" alt="Dish 2">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Butter Chicken</h5>
-            <p class="card-text">Perfectly butter chicken with a hint of lemon, garlic, and rosemary.</p>
-            <p class="chef-name">Chef: Emily</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dish 3 -->
-      <div class="col-md-4 w-25">
-        <div class="card dish-card">
-          <img src="menu6.jpeg" class="dish-img" alt="Dish 3">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Chicken Biryani</h5>
-            <p class="card-text">Super spicy chicken biryani with vibrant classics of Hyderabad, Karachi.</p>
-            <p class="chef-name">Chef: Amna Usman</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dish 4 -->
-      <div class="col-md-4 w-25 mt-5">
-        <div class="card dish-card">
-          <img src="C9.jpg" class="dish-img" alt="Dish 4">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Pasta</h5>
-            <p class="card-text">A simple pasta with fresh basil, mozzarella, and tomatoes.</p>
-            <p class="chef-name">Chef: Davis</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dish 5 -->
-      <div class="col-md-4 w-25 mt-5">
-        <div class="card dish-card">
-          <img src="C7.jpg" class="dish-img" alt="Dish 5">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Cheese Macroni</h5>
-            <p class="card-text">A delicious beef tenderloin wrapped in puff pastry and baked to perfection.</p>
-            <p class="chef-name">Chef: Sarah Lee</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dish 6 -->
-      <div class="col-md-4 w-25 mt-5">
-        <div class="card dish-card">
-          <img src="C3.jpg" class="dish-img" alt="Dish 6">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Special Spaghetti</h5>
-            <p class="card-text">A colorful and healthy stir fry with mixed vegetables and tofu.</p>
-            <p class="chef-name">Chef: Wilson</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <h3 class="fw-bold">Itallian Food</h3>
-
-
-
-    <div class="row gap-3 d-flex justify-content-center align-items-center mt-5">
-
-      <!-- Dish 1 -->
-      <div class="col-md-4 w-25">
-        <div class="card dish-card">
-          <img src="box1.jpg" class="dish-img" alt="Dish 1">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Spaghetti</h5>
-            <p class="card-text">A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.</p>
-            <p class="chef-name">Chef: John Doe</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dish 2 -->
-      <div class="col-md-4 w-25">
-        <div class="card dish-card">
-          <img src="box2.jpg" class="dish-img" alt="Dish 2">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Grilled Salmon</h5>
-            <p class="card-text">Perfectly grilled salmon with a hint of lemon, garlic, and rosemary.</p>
-            <p class="chef-name">Chef: Jane Smith</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dish 3 -->
-      <div class="col-md-4 w-25">
-        <div class="card dish-card">
-          <img src="box3.jpg" class="dish-img" alt="Dish 3">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Chicken Alfredo</h5>
-            <p class="card-text">A creamy, rich pasta dish with chicken, garlic, and parmesan cheese.</p>
-            <p class="chef-name">Chef: Emily Brown</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dish 4 -->
-      <div class="col-md-4 w-25 mt-5">
-        <div class="card dish-card">
-          <img src="box4.jpg" class="dish-img" alt="Dish 4">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Margherita Pizza</h5>
-            <p class="card-text">A simple pizza with fresh basil, mozzarella, and tomatoes.</p>
-            <p class="chef-name">Chef: Mike Davis</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dish 5 -->
-      <div class="col-md-4 w-25 mt-5">
-        <div class="card dish-card">
-          <img src="box5.jpg" class="dish-img" alt="Dish 5">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Beef Wellington</h5>
-            <p class="card-text">A delicious beef tenderloin wrapped in puff pastry and baked to perfection.</p>
-            <p class="chef-name">Chef: Sarah Lee</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dish 6 -->
-      <div class="col-md-4 w-25 mt-5">
-        <div class="card dish-card">
-          <img src="box6.jpg" class="dish-img" alt="Dish 6">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Vegetarian Stir Fry</h5>
-            <p class="card-text">A colorful and healthy stir fry with mixed vegetables and tofu.</p>
-            <p class="chef-name">Chef: Liam Wilson</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <h3 class="fw-bold">Mexiacn </h3>
-
-    <div class="row gap-3 d-flex justify-content-center align-items-center mt-5">
-
-      <!-- Dish 1 -->
-      <div class="col-md-4 w-25">
-        <div class="card dish-card">
-          <img src="box1.jpg" class="dish-img" alt="Dish 1">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Spaghetti</h5>
-            <p class="card-text">A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.</p>
-            <p class="chef-name">Chef: John Doe</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dish 2 -->
-      <div class="col-md-4 w-25">
-        <div class="card dish-card">
-          <img src="box2.jpg" class="dish-img" alt="Dish 2">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Grilled Salmon</h5>
-            <p class="card-text">Perfectly grilled salmon with a hint of lemon, garlic, and rosemary.</p>
-            <p class="chef-name">Chef: Jane Smith</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dish 3 -->
-      <div class="col-md-4 w-25">
-        <div class="card dish-card">
-          <img src="box3.jpg" class="dish-img" alt="Dish 3">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Chicken Alfredo</h5>
-            <p class="card-text">A creamy, rich pasta dish with chicken, garlic, and parmesan cheese.</p>
-            <p class="chef-name">Chef: Emily Brown</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dish 4 -->
-      <div class="col-md-4 w-25 mt-5">
-        <div class="card dish-card">
-          <img src="box4.jpg" class="dish-img" alt="Dish 4">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Margherita Pizza</h5>
-            <p class="card-text">A simple pizza with fresh basil, mozzarella, and tomatoes.</p>
-            <p class="chef-name">Chef: Mike Davis</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dish 5 -->
-      <div class="col-md-4 w-25 mt-5">
-        <div class="card dish-card">
-          <img src="box5.jpg" class="dish-img" alt="Dish 5">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Beef Wellington</h5>
-            <p class="card-text">A delicious beef tenderloin wrapped in puff pastry and baked to perfection.</p>
-            <p class="chef-name">Chef: Sarah Lee</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dish 6 -->
-      <div class="col-md-4 w-25 mt-5">
-        <div class="card dish-card">
-          <img src="box6.jpg" class="dish-img" alt="Dish 6">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Vegetarian Stir Fry</h5>
-            <p class="card-text">A colorful and healthy stir fry with mixed vegetables and tofu.</p>
-            <p class="chef-name">Chef: Liam Wilson</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-
-
-
-
-
-
-    <h3 class="fw-bold">Chinese</h3>
-    <div class="row gap-3 d-flex justify-content-center align-items-center mt-5">
-
-      <!-- Dish 1 -->
-      <div class="col-md-4 w-25">
-        <div class="card dish-card">
-          <img src="box1.jpg" class="dish-img" alt="Dish 1">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Spaghetti</h5>
-            <p class="card-text">A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.</p>
-            <p class="chef-name">Chef: John Doe</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dish 2 -->
-      <div class="col-md-4 w-25">
-        <div class="card dish-card">
-          <img src="box2.jpg" class="dish-img" alt="Dish 2">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Grilled Salmon</h5>
-            <p class="card-text">Perfectly grilled salmon with a hint of lemon, garlic, and rosemary.</p>
-            <p class="chef-name">Chef: Jane Smith</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dish 3 -->
-      <div class="col-md-4 w-25">
-        <div class="card dish-card">
-          <img src="box3.jpg" class="dish-img" alt="Dish 3">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Chicken Alfredo</h5>
-            <p class="card-text">A creamy, rich pasta dish with chicken, garlic, and parmesan cheese.</p>
-            <p class="chef-name">Chef: Emily Brown</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dish 4 -->
-      <div class="col-md-4 w-25 mt-5">
-        <div class="card dish-card">
-          <img src="box4.jpg" class="dish-img" alt="Dish 4">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Margherita Pizza</h5>
-            <p class="card-text">A simple pizza with fresh basil, mozzarella, and tomatoes.</p>
-            <p class="chef-name">Chef: Mike Davis</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dish 5 -->
-      <div class="col-md-4 w-25 mt-5">
-        <div class="card dish-card">
-          <img src="box5.jpg" class="dish-img" alt="Dish 5">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Beef Wellington</h5>
-            <p class="card-text">A delicious beef tenderloin wrapped in puff pastry and baked to perfection.</p>
-            <p class="chef-name">Chef: Sarah Lee</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dish 6 -->
-      <div class="col-md-4 w-25 mt-5">
-        <div class="card dish-card">
-          <img src="box6.jpg" class="dish-img" alt="Dish 6">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Vegetarian Stir Fry</h5>
-            <p class="card-text">A colorful and healthy stir fry with mixed vegetables and tofu.</p>
-            <p class="chef-name">Chef: Liam Wilson</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <h3 class="fw-bold">Desserts</h3>
-    <div class="row gap-3 d-flex justify-content-center align-items-center mt-5">
-
-      <!-- Dish 1 -->
-      <div class="col-md-4 w-25">
-        <div class="card dish-card">
-          <img src="box1.jpg" class="dish-img" alt="Dish 1">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Spaghetti</h5>
-            <p class="card-text">A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.</p>
-            <p class="chef-name">Chef: John Doe</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dish 2 -->
-      <div class="col-md-4 w-25">
-        <div class="card dish-card">
-          <img src="box2.jpg" class="dish-img" alt="Dish 2">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Grilled Salmon</h5>
-            <p class="card-text">Perfectly grilled salmon with a hint of lemon, garlic, and rosemary.</p>
-            <p class="chef-name">Chef: Jane Smith</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dish 3 -->
-      <div class="col-md-4 w-25">
-        <div class="card dish-card">
-          <img src="box3.jpg" class="dish-img" alt="Dish 3">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Chicken Alfredo</h5>
-            <p class="card-text">A creamy, rich pasta dish with chicken, garlic, and parmesan cheese.</p>
-            <p class="chef-name">Chef: Emily Brown</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dish 4 -->
-      <div class="col-md-4 w-25 mt-5">
-        <div class="card dish-card">
-          <img src="box4.jpg" class="dish-img" alt="Dish 4">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Margherita Pizza</h5>
-            <p class="card-text">A simple pizza with fresh basil, mozzarella, and tomatoes.</p>
-            <p class="chef-name">Chef: Mike Davis</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dish 5 -->
-      <div class="col-md-4 w-25 mt-5">
-        <div class="card dish-card">
-          <img src="box5.jpg" class="dish-img" alt="Dish 5">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Beef Wellington</h5>
-            <p class="card-text">A delicious beef tenderloin wrapped in puff pastry and baked to perfection.</p>
-            <p class="chef-name">Chef: Sarah Lee</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dish 6 -->
-      <div class="col-md-4 w-25 mt-5">
-        <div class="card dish-card">
-          <img src="box6.jpg" class="dish-img" alt="Dish 6">
-          <div class="card-body">
-            <h5 class="card-title yellow-theme">Vegetarian Stir Fry</h5>
-            <p class="card-text">A colorful and healthy stir fry with mixed vegetables and tofu.</p>
-            <p class="chef-name">Chef: Liam Wilson</p>
-            <a href="cart.html" class="btn btn-add-cart">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
+    <h2 class="mb-5 yellow-theme">Our Delicious Dishes</h2>
+    <div id="menu-container"></div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <p>&copy; 2024 Food Management System</p>
-    <p>Delicious dishes created with love and passion!</p>
-  </footer>
-
-  <!-- Bootstrap 5 JS -->
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script>
+    // Menu data
+    const menuData = {
+      "Indian Classic Food": [
+        { id: 1, name: "Burger", price: 10, image: "cr1.jpg" },
+        { id: 2, name: "Butter Chicken", price: 20, image: "C1.jpg" },
+        { id: 3, name: "Chicken Biryani", price: 10, image: "menu6.jpeg" },
+        { id: 4, name: "Pasta", price: 60, image: "C9.jpg" },
+        { id: 5, name: "Cheese Macroni", price: 50, image: "C7.jpg" },
+        { id: 6, name: "Special Spaghetti", price: 15, image: "C3.jpg" }
+      ],
+      "Italian Food": [
+        { id: 7, name: "Spaghetti", price: 10, image: "box1.jpg" },
+        { id: 8, name: "Grilled Salmon", price: 30, image: "box2.jpg" },
+        { id: 9, name: "Chicken Alfredo", price: 50, image: "box3.jpg" },
+        { id: 10, name: "Margherita Pizza", price: 80, image: "box4.jpg" },
+        { id: 11, name: "Beef Wellington", price: 45, image: "box5.jpg" },
+        { id: 12, name: "Vegetarion Stir Fry", price: 90, image: "box6.jpg" },
+        
+      ]
+    };
+
+    // Cart Management
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    function initializeMenu() {
+      const container = document.getElementById('menu-container');
+      
+      Object.entries(menuData).forEach(([category, items]) => {
+        const categoryHtml = `
+          <h3 class="fw-bold mb-4">${category}</h3>
+          <div class="row gap-3 d-flex justify-content-center align-items-center mb-5">
+            ${items.map(item => `
+              <div class="col-md-4 w-25">
+                <div class="card dish-card">
+                  <img src="${item.image}" class="dish-img" alt="${item.name}">
+                  <div class="card-body">
+                    <h5 class="card-title yellow-theme">${item.name}</h5>
+                    <p class="dish-price">Price: $${item.price}</p>
+                    <button onclick="addToCart(${item.id}, '${item.name}', ${item.price})" 
+                            class="btn btn-add-cart">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+        container.innerHTML += categoryHtml;
+      });
+    }
+
+    function toggleCart() {
+      const sidebar = document.querySelector('.cart-sidebar');
+      sidebar.classList.toggle('active');
+    }
+
+    function updateCartUI() {
+      const cartItems = document.querySelector('.cart-items');
+      const totalAmount = document.getElementById('cart-total-amount');
+      const cartCount = document.querySelector('.cart-count');
+      
+      cartCount.textContent = cart.length;
+      cartItems.innerHTML = cart.map((item, index) => `
+        <div class="cart-item">
+          <span>${item.name}</span>
+          <span>$${item.price}</span>
+          <span onclick="removeFromCart(${index})" style="cursor:pointer;color:#ff5722">
+            <i class="fas fa-trash"></i>
+          </span>
+        </div>
+      `).join('');
+      
+      totalAmount.textContent = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    function addToCart(id, name, price) {
+      cart.push({ id, name, price });
+      updateCartUI();
+
+      // Show Toastify notification
+      Toastify({
+        text: `🛒 ${name} added to cart!`,
+        duration: 3000,
+        gravity: "bottom",
+        position: "right",
+        style: {
+          background: "linear-gradient(to right, #ffd700, #ffa500)",
+          color: "black",
+          borderRadius: "10px",
+          padding: "15px 25px",
+          fontSize: "16px",
+          fontWeight: "bold"
+        },
+        onClick: toggleCart
+      }).showToast();
+
+      // Animate cart icon
+      const cartIcon = document.querySelector('.cart-icon');
+      cartIcon.style.transform = 'scale(1.2)';
+      setTimeout(() => cartIcon.style.transform = 'scale(1)', 200);
+    }
+
+    function removeFromCart(index) {
+      const removedItem = cart[index];
+      
+      // Show SweetAlert2 confirmation
+      Swal.fire({
+        title: 'Remove Item?',
+        text: `Do you want to remove ${removedItem.name} from cart?`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, remove it!',
+        cancelButtonText: 'No, keep it',
+        background: '#1a1a1a',
+        color: '#fff',
+        confirmButtonColor: '#ffd700',
+        cancelButtonColor: '#6c757d'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          cart.splice(index, 1);
+          updateCartUI();
+          
+          Toastify({
+            text: `🗑️ ${removedItem.name} removed from cart`,
+            duration: 3000,
+            gravity: "top",
+            position: "right",
+            style: {
+              background: "linear-gradient(to right, #ff5722, #ff7043)",
+              borderRadius: "10px",
+              padding: "15px 25px"
+            }
+          }).showToast();
+        }
+      });
+    }
+
+    // Initialize on page load
+    window.onload = () => {
+      initializeMenu();
+      updateCartUI();
+    };
+  </script>
 </body>
 </html>

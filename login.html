@@ -81,31 +81,31 @@
     <div class="loginBox">
         <img class="user" style="margin-left: 80px; margin-bottom: 20px;" src="https://i.ibb.co/yVGxFPR/2.png" height="100px" width="100px">
         <h3>Sign up here</h3>
-        <form id="signupForm">
+        <form id="loginForm">
             <div class="inputBox">
                 <input id="uname" type="text" name="Username" placeholder="Username">
                 <span id="unameError" class="error"></span><br>
-                
+
                 <input id="pass" type="password" name="Password" placeholder="Password">
                 <span id="passError" class="error"></span><br>
-                
+
                 <input id="email" type="email" name="email" placeholder="Enter email">
                 <span id="emailError" class="error"></span><br>
-            </div> 
-            <input   style="margin-left: 60px; margin-top: 10px; padding-left: 40px; margin-bottom: 10px; padding-right: 40px;" type="submit" value="Register">
+            </div>
+            <input style="margin-left: 60px; margin-top: 10px; padding-left: 40px; margin-bottom: 10px; padding-right: 40px;" type="submit" value="Login">
         </form>
 
         <div class="text-center">
             <a href="signup.html">
-                <p style="color: #59238F;">Sign-In</p>
+                <p style="color: #59238F;">Sign-Up</p>
             </a>
-            
+
         </div>
     </div>
 
     <script>
-        // JavaScript function for form validation
-        document.getElementById("signupForm").addEventListener("submit", function(event) {
+        // JavaScript function for form validation and login logic
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
             event.preventDefault();  // Prevent form submission until validation
 
             // Get form field values
@@ -125,41 +125,39 @@
 
             let isValid = true;
 
-            // Username validation
+            // Validate username, email, and password
             if (username === "") {
                 unameError.textContent = "Please enter a username.";
                 isValid = false;
             }
 
-            // Password validation
             if (password === "") {
                 passError.textContent = "Please enter a password.";
                 isValid = false;
-            } else if (password.length < 6) {
-                passError.textContent = "Password must be at least 6 characters.";
-                isValid = false;
             }
 
-            // Email validation
             if (email === "") {
                 emailError.textContent = "Please enter an email.";
                 isValid = false;
-            } else if (!validateEmail(email)) {
-                emailError.textContent = "Please enter a valid email address.";
-                isValid = false;
             }
 
-            // If valid, allow form submission
-            if (isValid) {
-                alert("Form submitted successfully!");
-                }
-        });
+            // Specific credentials check
+            const validCredentials = {
+                "tayyaba": { email: "tayyaba78@gmail.com", password: "123456" },
+                "areeba": { email: "areeba789@gmail.com", password: "123456" },
+                "amna": { email: "amna66@gmail.com", password: "123456" }
+            };
 
-        // Helper function to validate email format
-        function validateEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(String(email).toLowerCase());
-        }
+            if (isValid) {
+                // Check for valid username and corresponding email & password
+                if (validCredentials[username] && validCredentials[username].email === email && validCredentials[username].password === password) {
+                    alert("Successfully logged in!");
+                    window.location.href = "menu.html";  // Redirect to menu page
+                } else {
+                    alert("Invalid credentials. Please try again.");
+                }
+            }
+        });
     </script>
 </body>
 
